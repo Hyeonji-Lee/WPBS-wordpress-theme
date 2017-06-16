@@ -151,3 +151,16 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Bootstrap3
+ */
+ function bootstrap_styles(){
+	 wp_enqueue_style( 'bootstrap-stylesheet', get_stylesheet_directory_uri() . '/bootstrap/css/bootstrap.css' );
+	 wp_enqueue_script( 'bootstrap-script', get_stylesheet_directory_uri() . '/bootstrap/js/bootstrap.js', array('jquery') );
+	 wp_enqueue_style( 'wpbs-stylesheet', get_stylesheet_directory_uri() . '/wpbs-style.css' );
+ }
+ add_action( 'wp_enqueue_scripts', 'bootstrap_styles' );
+
+ // Register Custom Navigation Walker
+ require_once('wp-bootstrap-navwalker.php');

@@ -13,6 +13,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
@@ -40,14 +41,34 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'wpbs' ); ?></button>
-			<?php
+		<nav id="site-navigation" class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#wpbs-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="<?php echo home_url(); ?>">
+						<?php bloginfo('name'); ?>
+					</a>
+				</div>
+
+				<?php
 				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
+					'manu'				=> 'primary',
+					'theme_location'	=> 'primary',
+					'depth'				=> '2',
+					'container'			=> 'div',
+					'container_class'	=> 'collapse navbar-collapse',
+					'container_id'		=> 'wpbs-navbar-collapse-1',
+					'menu_class'		=> 'nav navbar-nav',
+					'fallback_cb'		=> 'wp_bootstrap_navwalker::fallback',
+					'walker'      		 => new wp_bootstrap_navwalker()
 				) );
 			?>
+			</div>	
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
