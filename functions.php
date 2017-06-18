@@ -153,6 +153,36 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
+ * 웹폰트 비동기식으로 불러오기
+ */
+function webfont_js(){
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" async=""></script>
+<script>
+	WebFontConfig = {
+		active: function() {
+			sessionStorage.fonts = true;
+		},
+		custom: {
+			families: ['Nanum Gothic'],
+			urls: ['http://fonts.googleapis.com/earlyaccess/nanumgothic.css']
+		}
+	};
+	(function() {
+		var wf = document.createElement('script');
+		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+		'://ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js';
+		wf.type = 'text/javascript';
+		wf.async = 'true';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(wf, s);
+	})();
+</script>
+<?php
+}
+add_action( 'wp_head', 'webfont_js' );
+
+/**
  * Bootstrap3
  */
  function bootstrap_styles(){

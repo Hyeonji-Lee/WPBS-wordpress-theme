@@ -41,7 +41,7 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<nav id="site-navigation" class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#wpbs-navbar-collapse-1">
