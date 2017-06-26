@@ -194,3 +194,7 @@ add_action( 'wp_head', 'webfont_js' );
 
  // Register Custom Navigation Walker
  require_once('wp-bootstrap-navwalker.php');
+
+ register_nav_menus( array(
+        'primary' => __( 'Primary Menu', 'WPBS' ),
+) );
