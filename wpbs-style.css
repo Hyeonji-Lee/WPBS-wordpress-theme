@@ -1,1 +1,78 @@
 body {font-family: 'Nanum Gothic', sans-serif;}
+
+.navbar-default { background-color: #000000}
+.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus { background-color: #222222}
+.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus { background-color: #EE0000}
+.dropdown-menu { background-color: #222222}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-color: #EE0000}
+.navbar-default { background-image: none; }
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-image: none; }
+.navbar-default { border-color: #080808}
+.navbar-default .navbar-brand { color: #FFFFFF}
+.navbar-default .navbar-brand:hover { color: #FFFFFF}
+.navbar-default .navbar-nav>li>a { color: #FFFFFF}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus { color: #FFFFFF}
+.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus { color: #FFFFFF}
+.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus { color: #FFFFFF}
+.dropdown-menu>li>a { color: #fff}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { color: #FFFFFF}
+.navbar-default .navbar-nav>.dropdown>a .caret { border-top-color: #999999}
+.navbar-default .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
+.navbar-default .navbar-nav>.dropdown>a .caret { border-bottom-color: #999999}
+.navbar-default .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
+/*===========================================
+=       Bootstrap 3 Media Queries       =
+===========================================*/
+
+/*==========  Mobile First Method  ==========*/
+
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .navbar-nav{
+        float:right;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+
+}
