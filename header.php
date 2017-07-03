@@ -23,11 +23,12 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wpbs' ); ?></a>
-<div class="container">
+
+<div class="container-fluid">
 	<header id="masthead" class="site-header" role="banner">
 		<div class="row">
 			<nav id="site-navigation" class="navbar navbar-default" role="navigation">
-				<div class="container-fluid">
+				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#wpbs-navbar-collapse-1">
 							<span class="sr-only">Toggle navigation</span>
@@ -35,7 +36,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<!--로고 넣는 자리-->
+						
 						<a class="navbar-brand" href="<?php echo home_url(); ?>">
 							<?php bloginfo('name'); ?>
 						</a>
@@ -54,11 +55,10 @@
 						'walker'      		 => new WP_Bootstrap_Navwalker()
 					) );
 				?>
-				</div>	
+				</div><!-- .container -->	
 			</nav><!-- #site-navigation -->
 		</div><!-- .row -->
 	</header><!-- #masthead -->
-</div><!-- .container -->
+</div><!-- .container-fluid -->
 
-
-	<div id="content" class="site-content">
+<div id="content" class="site-content">
