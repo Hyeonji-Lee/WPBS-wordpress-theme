@@ -153,7 +153,7 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * ?›¹?°?Š¸ ë¹„ë™ê¸°ì‹?œ¼ë¡? ë¶ˆëŸ¬?˜¤ê¸?
+ * ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ë¹„ë™ê¸°ì‹?ï¿½ï¿½ï¿½? ë¶ˆëŸ¬?ï¿½ï¿½ï¿½?
  */
 function webfont_js(){
 ?>
@@ -198,3 +198,15 @@ require_once('wp-bootstrap-navwalker.php');
 register_nav_menus( array(
 	'primary' => __( 'Primary Menu', 'WPBS' ),
 ) );
+
+function themename_custom_logo_setup() {
+    $defaults = array(
+        'height'      => 50,
+        'width'       => 50,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array( 'site-title', 'site-description' ),
+    );
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
