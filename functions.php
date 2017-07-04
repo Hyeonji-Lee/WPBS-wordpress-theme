@@ -199,10 +199,11 @@ register_nav_menus( array(
 	'primary' => __( 'Primary Menu', 'WPBS' ),
 ) );
 
+// 테마 로고 삽입
 function themename_custom_logo_setup() {
     $defaults = array(
-        'height'      => 50,
-        'width'       => 50,
+        'height'      => 40,
+        'width'       => 40,
         'flex-height' => true,
         'flex-width'  => true,
         'header-text' => array( 'site-title', 'site-description' ),
