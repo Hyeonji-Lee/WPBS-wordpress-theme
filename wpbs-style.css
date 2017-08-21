@@ -39,7 +39,7 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 #wpbs-navbar-collapse-1 li .search-submit{height:28px; vertical-align:top;}
 
 .wpbs-site-icon{margin:50px 0;}
-.wpbs-site-icon img{display:block; margin:0 auto;}
+.wpbs-site-icon img{display:block; /*margin:0 auto;*/}
 
 /*푸터*/
 .site-footer{padding:20px 0;}
