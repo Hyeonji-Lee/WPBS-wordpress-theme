@@ -26,7 +26,10 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background-color: #333 !important;}
 
 #site-navigation{border-radius:0;}
-.wpbs-logoimg{padding:10px;}
+#wpbs-navbar-collapse-1{position: relative; float:right;}
+#wpbs-navbar-collapse-1 li:last-child{height:50px; margin-left:20px;}
+#wpbs-navbar-collapse-1 li form.search-form{display:block; padding:10px 0;}
+.wpbs-logoimg{padding:0;}
 
 /*===========================================
 =       Bootstrap 3 Media Queries       =
@@ -41,9 +44,9 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-    .navbar-nav{
+    /*.navbar-nav{
         float:right;
-    }
+    }*/
 }
 
 /* Medium Devices, Desktops */

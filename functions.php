@@ -153,7 +153,7 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * ?��?��?�� 비동기식?���? 불러?���?
+ * 구글 폰트 비동기식으로 불러오기
  */
 function webfont_js(){
 ?>
@@ -200,14 +200,28 @@ register_nav_menus( array(
 ) );
 
 // 테마 로고 삽입
-function themename_custom_logo_setup() {
+function wpbs_logo_setup() {
     $defaults = array(
-        'height'      => 40,
-        'width'       => 40,
+        'height'      => 50,
+        'width'       => 200,
         'flex-height' => true,
         'flex-width'  => true,
         'header-text' => array( 'site-title', 'site-description' ),
     );
     add_theme_support( 'custom-logo', $defaults );
 }
-add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+add_action( 'after_setup_theme', 'wpbs_logo_setup' );
+
+add_filter( 'wp_nav_menu_items','wpbs_add_search_menu', 10, 2 );
+function wpbs_add_search_menu( $items, $args ) {
+	$items .= '<li>' . get_search_form( false ) . '</li>';
+	return $items;
+}
+
+/*페이지에서 빈 p태그 방지*/
+function remove_empty_p(){
+	if(is_page()){
+		remove_filter('the_content', 'wpautop');
+	}
+}
+add_action('wp_head', 'remove_empty_p');
