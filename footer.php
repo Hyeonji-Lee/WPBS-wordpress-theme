@@ -10,9 +10,9 @@
  */
 
 ?>
-
+		</div><!--.container-->
 	</div><!-- #content -->
-	<div class="container-fluid">
+	<div class="container-fluid wpbs-footer-container">
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="container wpbs-container">
 				<div class="site-info">

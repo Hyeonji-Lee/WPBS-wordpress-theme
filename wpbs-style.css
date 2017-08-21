@@ -1,4 +1,4 @@
-html, body{height:100%;}
+html, body{min-height:100%;}
 
 body {font-family: 'Nanum Gothic', sans-serif;}
 
@@ -30,13 +30,20 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 #site-navigation{border-radius:0;}
 
 /*로고*/
-.navbar > .container .navbar-brand{margin-left:0;}
+.navbar > .container .navbar-brand{margin-left:0; padding:0;}
 .wpbs-logoimg{padding:0;}
 
 /*메뉴바 검색창*/
 #wpbs-navbar-collapse-1 li form.search-form{display:block; padding:10px 0;}
 #wpbs-navbar-collapse-1 li form.search-form label{margin:0;}
 #wpbs-navbar-collapse-1 li .search-submit{height:28px; vertical-align:top;}
+
+.wpbs-site-icon{margin:50px 0;}
+.wpbs-site-icon img{display:block; margin:0 auto;}
+
+/*푸터*/
+.site-footer{padding:20px 0;}
+.wpbs-footer-container{width:100%; background:#000; color:#fff; margin-top:50px;}
 
 /*===========================================
 =       Bootstrap 3 Media Queries       =
@@ -55,25 +62,30 @@ body {font-family: 'Nanum Gothic', sans-serif;}
         float:right;
     }*/
     #wpbs-navbar-collapse-1{position: relative; float:right;}
-    #wpbs-navbar-collapse-1 li:last-child{height:50px; margin-left:50px;}
+    #wpbs-navbar-collapse-1>ul>li:last-child{height:50px; margin-left:50px;}
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
+@media only screen and (min-width : 992px and) {
 
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
-    .wpbs-container.container{width:100%;}
+    .wpbs-container.container{width:100%; padding:0 5%;}
+    .wpbs-content{margin-left:-15px;}
+    .wpbs-sidebar{margin-right:-15px;}
 }
 
 
 /*==========  Non-Mobile First Method  ==========*/
 
 /* Large Devices, Wide Screens */
+@media only screen and (max-width : 1600px) {
+    .wpbs-container.container{width:100%; padding:0 5%;}
+}
 @media only screen and (max-width : 1200px) {
-
+    
 }
 
 /* Medium Devices, Desktops */
