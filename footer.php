@@ -14,7 +14,7 @@
 	</div><!-- #content -->
 	<div class="container-fluid">
 		<footer id="colophon" class="site-footer" role="contentinfo">
-			<div class="container">
+			<div class="container wpbs-container">
 				<div class="site-info">
 					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wpbs' ) ); ?>"><?php
 						/* translators: %s: CMS name, i.e. WordPress. */

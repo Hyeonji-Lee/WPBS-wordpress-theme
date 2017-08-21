@@ -2,6 +2,7 @@ html, body{height:100%;}
 
 body {font-family: 'Nanum Gothic', sans-serif;}
 
+/*부트스트랩 내비게이션*/
 .navbar-default { background-color: #000000;}
 .navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus { background-color: #EE0000;}
 .navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus { background-color: #080808;}
@@ -25,11 +26,17 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 .navbar-default .navbar-toggle{border-color: #333; background-color: transparent !important;}
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background-color: #333 !important;}
 
+/*사이트 내비게이션 세부설정*/
 #site-navigation{border-radius:0;}
-#wpbs-navbar-collapse-1{position: relative; float:right;}
-#wpbs-navbar-collapse-1 li:last-child{height:50px; margin-left:20px;}
-#wpbs-navbar-collapse-1 li form.search-form{display:block; padding:10px 0;}
+
+/*로고*/
+.navbar > .container .navbar-brand{margin-left:0;}
 .wpbs-logoimg{padding:0;}
+
+/*메뉴바 검색창*/
+#wpbs-navbar-collapse-1 li form.search-form{display:block; padding:10px 0;}
+#wpbs-navbar-collapse-1 li form.search-form label{margin:0;}
+#wpbs-navbar-collapse-1 li .search-submit{height:28px; vertical-align:top;}
 
 /*===========================================
 =       Bootstrap 3 Media Queries       =
@@ -47,6 +54,8 @@ body {font-family: 'Nanum Gothic', sans-serif;}
     /*.navbar-nav{
         float:right;
     }*/
+    #wpbs-navbar-collapse-1{position: relative; float:right;}
+    #wpbs-navbar-collapse-1 li:last-child{height:50px; margin-left:50px;}
 }
 
 /* Medium Devices, Desktops */
@@ -56,7 +65,7 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
-
+    .wpbs-container.container{width:100%;}
 }
 
 

@@ -28,7 +28,7 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div class="row">
 			<nav id="site-navigation" class="navbar navbar-default" role="navigation">
-				<div class="container">
+				<div class="container wpbs-container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#wpbs-navbar-collapse-1">
 							<span class="sr-only">Toggle navigation</span>
