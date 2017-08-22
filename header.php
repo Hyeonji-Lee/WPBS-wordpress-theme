@@ -55,13 +55,14 @@
 						'theme_location'	=> 'primary',
 						'depth'				=>  2,
 						'container'			=> 'div',
-						'container_class'	=> 'collapse navbar-collapse',
+						'container_class'	=> 'collapse navbar-collapse navbar-left',
 						'container_id'		=> 'wpbs-navbar-collapse-1',
 						'menu_class'		=> 'nav navbar-nav',
 						'fallback_cb'		=> 'wp_bootstrap_navwalker::fallback',
 						'walker'      		 => new WP_Bootstrap_Navwalker()
 					) );
 				?>
+					<div class="navbar-right"><?php get_search_form(); ?></div>
 				</div><!-- .container -->	
 			</nav><!-- #site-navigation -->
 		</div><!-- .row -->

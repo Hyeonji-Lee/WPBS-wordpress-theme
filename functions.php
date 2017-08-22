@@ -212,11 +212,11 @@ function wpbs_logo_setup() {
 }
 add_action( 'after_setup_theme', 'wpbs_logo_setup' );
 
-add_filter( 'wp_nav_menu_items','wpbs_add_search_menu', 10, 2 );
+/*add_filter( 'wp_nav_menu_items','wpbs_add_search_menu', 10, 2 );
 function wpbs_add_search_menu( $items, $args ) {
-	$items .= '<li>' . get_search_form( false ) . '</li>';
+	$items .= '<li class="nav">' . get_search_form( false ) . '</li>';
 	return $items;
-}
+}*/
 
 /*페이지에서 빈 p태그 방지*/
 function remove_empty_p(){
