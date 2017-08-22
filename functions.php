@@ -95,7 +95,7 @@ function wpbs_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'wpbs' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s panel panel-default">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title">',
+		'before_title'  => '<h4 class="widget-title panel-title panel-heading">',
 		'after_title'   => '</h4>',
 	) );
 }
@@ -195,6 +195,9 @@ add_action( 'wp_enqueue_scripts', 'bootstrap_styles' );
 // Register Custom Navigation Walker
 require_once('wp-bootstrap-navwalker.php');
 
+
+
+
 register_nav_menus( array(
 	'primary' => __( 'Primary Menu', 'WPBS' ),
 ) );
@@ -212,11 +215,29 @@ function wpbs_logo_setup() {
 }
 add_action( 'after_setup_theme', 'wpbs_logo_setup' );
 
-/*add_filter( 'wp_nav_menu_items','wpbs_add_search_menu', 10, 2 );
-function wpbs_add_search_menu( $items, $args ) {
-	$items .= '<li class="nav">' . get_search_form( false ) . '</li>';
-	return $items;
-}*/
+/*검색 폼 부트스트랩*/
+add_filter( 'get_search_form', 'wop_bootstrap_search_form', 100);
+function wop_bootstrap_search_form() {
+    $value_or_placeholder = ( get_search_query() == '' ) ? 'placeholder' : 'value';
+    $label = 'Search';
+    $search_text = 'Search this website...';
+    $button_text = 'Search';
+$form = '<form method="get" class="search-form form-inline" action="'.home_url( '/' ).'" role="search">
+    <div class="form-group">
+        <label class="sr-only sr-only-focusable" for="bsg-search-form">'.esc_html( $label ).'</label>
+        <div class="input-group">
+            <input type="search" class="search-field form-control" id="search" name="s" '.$value_or_placeholder.'="'.esc_attr( $search_text ).'">
+            <span class="input-group-btn">
+                <button type="submit" class="search-submit btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <span class="sr-only">'.esc_attr( $button_text ).'</span>
+                </button>
+            </span>
+        </div>
+    </div>
+</form>';
+    return $form;
+}
 
 /*페이지에서 빈 p태그 방지*/
 function remove_empty_p(){

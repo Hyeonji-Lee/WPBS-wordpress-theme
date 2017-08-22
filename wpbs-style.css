@@ -28,16 +28,24 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 
 /*사이트 내비게이션 세부설정*/
 #site-navigation{border-radius:0;}
+.navbar-default .navbar-nav>li>a{padding:15px 20px;}
 
 /*로고*/
 .navbar > .container .navbar-brand{margin-left:0; padding:0;}
 .wpbs-logoimg{padding:0;}
 
-/*메뉴바 검색창*/
-#wpbs-navbar-collapse-1 li form.search-form{display:block; padding:10px 0;}
-#wpbs-navbar-collapse-1 li form.search-form label{margin:0;}
-#wpbs-navbar-collapse-1 li .search-submit{height:28px; vertical-align:top;}
+/*메뉴바 및 사이드바 검색창*/
+form.search-form{display:block; padding:10px 0;}
+form.search-form label{margin:0;}
+.search-submit{height:28px; vertical-align:top;}
 
+/*사이드바*/
+/*.wpbs-sidebar h4{border-bottom:1px solid #dddddd; padding-bottom:10px;}
+.wpbs-sidebar section{padding: 0 10px;}
+.wpbs-sidebar ul{list-style:none; margin:0 0 10px 0; padding:0;}
+.wpbs-sidebar ul>li{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}*/
+
+/*프론트페이지 사이트 아이콘*/
 .wpbs-site-icon{margin:50px 0;}
 .wpbs-site-icon img{display:block; /*margin:0 auto;*/}
 
@@ -61,8 +69,8 @@ body {font-family: 'Nanum Gothic', sans-serif;}
     /*.navbar-nav{
         float:right;
     }*/
-    #wpbs-navbar-collapse-1{position: relative; float:right;}
-    #wpbs-navbar-collapse-1>ul>li:last-child{height:50px; margin-left:50px;}
+    #wpbs-navbar-collapse-1{position: relative; margin-left:50px;}
+    /*#wpbs-navbar-collapse-1>ul>li:last-child{height:50px; margin-left:50px;}*/
 }
 
 /* Medium Devices, Desktops */
@@ -74,7 +82,10 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 @media only screen and (min-width : 1200px) {
     .wpbs-container.container{width:100%; padding:0 5%;}
     .wpbs-content{margin-left:-15px;}
-    .wpbs-sidebar{margin-right:-15px;}
+    .wpbs-sidebar{right:0; margin-right:-15px; transition:all 0.5s;}
+    /*.wpbs-sidebar.affix-top{}*/
+    .wpbs-sidebar.affix{top:50px; padding-right:5%;}
+    
 }
 
 
