@@ -7,7 +7,7 @@ get_header(); ?>
     <div class="wpbs-site-icon">
         <img src="<?php site_icon_url(); ?>">
     </div>
-    <div class="col-lg-10 wpbs-content">
+    <div class="col-lg-9 wpbs-content">
         <div id="primary" class="content-area">
             <main id="main" class="site-main" role="main">
 
