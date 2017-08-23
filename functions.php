@@ -220,7 +220,7 @@ add_filter( 'get_search_form', 'wop_bootstrap_search_form', 100);
 function wop_bootstrap_search_form() {
     $value_or_placeholder = ( get_search_query() == '' ) ? 'placeholder' : 'value';
     $label = 'Search';
-    $search_text = 'Search this website...';
+    $search_text = 'Search';
     $button_text = 'Search';
 $form = '<form method="get" class="search-form form-inline" action="'.home_url( '/' ).'" role="search">
     <div class="form-group">
