@@ -40,9 +40,9 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 
 /*사이드바*/
 /*.wpbs-sidebar h4{border-bottom:1px solid #dddddd; padding-bottom:10px;}
-.wpbs-sidebar section{padding: 0 10px;}
+.wpbs-sidebar section{padding: 0 10px;}*/
 .wpbs-sidebar ul{list-style:none; margin:0 0 10px 0; padding:0;}
-.wpbs-sidebar ul>li{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}*/
+.wpbs-sidebar ul>li a{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 
 /*프론트페이지 사이트 아이콘*/
 .wpbs-site-icon{margin:50px 0;}
