@@ -249,13 +249,32 @@ function remove_empty_p(){
 }
 add_action('wp_head', 'remove_empty_p');
 
-function widget_output_processor( $widget_output, $ul_class, $li_class ) {
-	
+function widget_output_processor( $widget_output, $ul_class, $li_class, $table_class ) {
+	/*일반 ul li list-group추가*/
 	$widget_output = str_replace('<ul>', '<ul class="'.$ul_class.'">', $widget_output);
 	$widget_output = str_replace('<li>', '<li class="'.$li_class.'">', $widget_output);
+
+	/*카테고리*/
+	$widget_output = str_replace('<li class="cat-item', '<li class="'.$li_class.' cat-item', $widget_output);
+	$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
+	$widget_output = str_replace(')', ' </span>', $widget_output);
+
+	/*페이지*/
+	$widget_output = str_replace('<li class="page_item', '<li class="'.$li_class.' page_item', $widget_output);
+	
+	/*덧글*/
+	$widget_output = str_replace('ul id="recentcomments"', 'ul id="recentcomments" class="'.$ul_class.'"', $widget_output);
+	$widget_output = str_replace('li class="recentcomments"', 'li class="'.$li_class.' recentcomments"', $widget_output);
+
+	/*달력*/
+	$widget_output = str_replace('table id="wp-calendar"', 'table id="wp-calendar" class="'.$table_class.'"', $widget_output);
+
+	/*Nav bar*/
+	$widget_output = str_replace(' class="menu"', 'class="menu nav nav-stacked nav-pills"', $widget_output);
+
 	//var_dump($widget_output);
 	return $widget_output;
 
 }
-add_filter( 'widget_output', 'widget_output_processor', 10, 3 );
+add_filter( 'widget_output', 'widget_output_processor', 10, 4 );
 	
