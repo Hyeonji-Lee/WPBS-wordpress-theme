@@ -31,7 +31,7 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 .navbar-default .navbar-nav>li>a{padding:15px 20px;}
 
 /*로고*/
-.navbar > .container .navbar-brand{margin-left:0; padding:0;}
+.navbar > .container .navbar-brand{margin-left:0; padding:0; line-height:50px;}
 .wpbs-logoimg{padding:0;}
 
 /*메뉴바 및 사이드바 검색창*/
