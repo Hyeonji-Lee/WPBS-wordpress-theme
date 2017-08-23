@@ -249,13 +249,13 @@ function remove_empty_p(){
 }
 add_action('wp_head', 'remove_empty_p');
 
-function widget_output_processor( $widget_output, /*$ul_class,*/ $li_class ) {
+function widget_output_processor( $widget_output, $ul_class, $li_class ) {
 	
-	//$widget_output = str_replace('<ul>', '<ul class="'.$ul_class.'">', $widget_output);
+	$widget_output = str_replace('<ul>', '<ul class="'.$ul_class.'">', $widget_output);
 	$widget_output = str_replace('<li>', '<li class="'.$li_class.'">', $widget_output);
 	//var_dump($widget_output);
 	return $widget_output;
 
 }
-add_filter( 'widget_output', 'widget_output_processor', 10, 2 );
+add_filter( 'widget_output', 'widget_output_processor', 10, 3 );
 	

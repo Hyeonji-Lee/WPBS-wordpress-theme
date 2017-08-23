@@ -17,9 +17,9 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 			ob_start();
 			dynamic_sidebar( 'sidebar-1' );
 			$sidebar_output = ob_get_clean();
-			//$ul_class = 'list-group';
+			$ul_class = 'list-group';
 			$li_class = 'list-group-item';
-			echo apply_filters( 'widget_output', $sidebar_output, /*$ul_class,*/ $li_class );
+			echo apply_filters( 'widget_output', $sidebar_output, $ul_class, $li_class );
 		?>
 	</aside><!-- #secondary -->
 </div>
