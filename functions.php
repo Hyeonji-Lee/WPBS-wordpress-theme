@@ -216,7 +216,7 @@ function wpbs_logo_setup() {
 add_action( 'after_setup_theme', 'wpbs_logo_setup' );
 
 /*검색 폼 부트스트랩*/
-add_filter( 'get_search_form', 'wop_bootstrap_search_form', 100);
+/*add_filter( 'get_search_form', 'wop_bootstrap_search_form', 100);
 function wop_bootstrap_search_form() {
     $value_or_placeholder = ( get_search_query() == '' ) ? 'placeholder' : 'value';
     $label = 'Search';
@@ -237,7 +237,7 @@ $form = '<form method="get" class="search-form form-inline" action="'.home_url( 
     </div>
 </form>';
     return $form;
-}
+}*/
 
 /*페이지에서 빈 p태그 방지*/
 function remove_empty_p(){
