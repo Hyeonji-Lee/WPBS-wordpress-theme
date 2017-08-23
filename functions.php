@@ -256,8 +256,8 @@ function widget_output_processor( $widget_output, $ul_class, $li_class, $table_c
 
 	/*카테고리*/
 	$widget_output = str_replace('<li class="cat-item', '<li class="'.$li_class.' cat-item', $widget_output);
-	$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
-	$widget_output = str_replace(')', ' </span>', $widget_output);
+	//$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
+	//$widget_output = str_replace(')', ' </span>', $widget_output);
 
 	/*페이지*/
 	$widget_output = str_replace('<li class="page_item', '<li class="'.$li_class.' page_item', $widget_output);
@@ -270,7 +270,7 @@ function widget_output_processor( $widget_output, $ul_class, $li_class, $table_c
 	$widget_output = str_replace('table id="wp-calendar"', 'table id="wp-calendar" class="'.$table_class.'"', $widget_output);
 
 	/*Nav bar*/
-	$widget_output = str_replace(' class="menu"', 'class="menu nav nav-stacked nav-pills"', $widget_output);
+	//$widget_output = str_replace(' class="menu"', 'class="menu nav nav-stacked nav-pills"', $widget_output);
 
 	//var_dump($widget_output);
 	return $widget_output;
