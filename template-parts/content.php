@@ -17,7 +17,7 @@
 		</div><!-- .post-thumbnail -->
 		<?php else : ?>
 		<div class="post-thumbnail">
-			<a href="<?php the_permalink(); ?>">
+			<a class="thumbnail" href="<?php the_permalink(); ?>">
 				<?php the_post_thumbnail( 'wpbs-featured-image' ); ?>
 			</a>
 		</div><!-- .post-thumbnail -->
