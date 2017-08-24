@@ -82,7 +82,7 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
-    .wpbs-container.container{width:100%; padding:0 5%;}
+    .wpbs-container.container{max-width:1600px; width:100%; padding:0 5%;}
     .wpbs-content{margin-left:-15px;}
     .wpbs-sidebar{right:0; margin-right:-15px; transition:all 0.5s;}
     /*.wpbs-sidebar.affix-top{}*/
@@ -94,11 +94,8 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 /*==========  Non-Mobile First Method  ==========*/
 
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1600px) {
-    .wpbs-container.container{width:100%; padding:0 5%;}
-}
 @media only screen and (max-width : 1200px) {
-    
+    .wpbs-container.container{max-width:1600px; width:100%; padding:0 5%;}
 }
 
 /* Medium Devices, Desktops */
