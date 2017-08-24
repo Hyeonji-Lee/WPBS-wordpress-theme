@@ -197,9 +197,6 @@ add_action( 'wp_enqueue_scripts', 'bootstrap_styles' );
 // Register Custom Navigation Walker
 require_once('wp-bootstrap-navwalker.php');
 
-
-
-
 register_nav_menus( array(
 	'primary' => __( 'Primary Menu', 'WPBS' ),
 ) );
@@ -241,6 +238,94 @@ $form = '<form method="get" class="search-form form-inline" action="'.home_url( 
     return $form;
 }
 
+function my_filter_dynamic_sidebar_params( $sidebar_params ) {
+	
+	if ( is_admin() ) {
+		return $sidebar_params;
+	}
+	
+	global $wp_registered_widgets;
+	$widget_id = $sidebar_params[0]['widget_id'];
+	
+	$wp_registered_widgets[ $widget_id ]['original_callback'] = $wp_registered_widgets[ $widget_id ]['callback'];
+	$wp_registered_widgets[ $widget_id ]['callback'] = 'my_custom_widget_callback_function';
+	
+	return $sidebar_params;
+	
+}
+add_filter( 'dynamic_sidebar_params', 'my_filter_dynamic_sidebar_params' );
+
+function my_custom_widget_callback_function() {
+	
+	global $wp_registered_widgets;
+	$original_callback_params = func_get_args();
+	$widget_id = $original_callback_params[0]['widget_id'];
+	
+	$original_callback = $wp_registered_widgets[ $widget_id ]['original_callback'];
+	$wp_registered_widgets[ $widget_id ]['callback'] = $original_callback;
+	
+	$widget_id_base = $wp_registered_widgets[ $widget_id ]['callback'][0]->id_base;
+	
+	if ( is_callable( $original_callback ) ) {
+		
+		ob_start();
+		call_user_func_array( $original_callback, $original_callback_params );
+		$widget_output = ob_get_clean();
+		
+		echo apply_filters( 'widget_output', $widget_output, $widget_id_base, $widget_id );
+		
+	}
+	
+}
+
+function wpbs_sidewidget_output_filter( $widget_output, $widget_id_base, $widget_id ) {
+	$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
+	$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
+	switch ($widget_id_base){
+		case 'categories':
+			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
+			$widget_output = str_replace('<li class="cat-item cat-item-', '<li class="list-group-item cat-item cat-item-', $widget_output);
+			$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
+			$widget_output = str_replace(')', ' </span>', $widget_output);
+			break;
+		case 'calendar':
+			$widget_output = str_replace('calendar_wrap', 'calendar_wrap table-responsive', $widget_output);
+			$widget_output = str_replace('<table id="wp-calendar', '<table class="table table-condensed" id="wp-calendar', $widget_output);
+			break;
+		case 'tag_cloud':
+			$widget_output = str_replace('class="tag-cloud-link', 'class="label label-default tag-cloud-link', $widget_output);
+			break;
+		case 'archives':
+			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
+			$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
+			$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
+			$widget_output = str_replace(')', ' </span>', $widget_output);
+			break;
+		case 'meta':
+			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
+			$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
+			break;
+		case 'recent-posts':
+			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
+			$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
+			$widget_output = str_replace('class="post-date"', 'class="post-date text-muted small"', $widget_output);
+			break;
+		case 'recent-comments':
+			$widget_output = str_replace('<ul id="recentcomments">', '<ul id="recentcomments" class="list-group">', $widget_output);
+			$widget_output = str_replace('<li class="recentcomments">', '<li class="recentcomments list-group-item">', $widget_output);
+			break;
+		case 'pages':
+			$widget_output = str_replace('<ul>', '<ul class="nav nav-stacked nav-pills">', $widget_output);
+			break;
+		case 'nav_menu':
+			$widget_output = str_replace(' class="menu"', 'class="menu nav nav-stacked nav-pills"', $widget_output);
+			break;
+		
+	}
+	return $widget_output;
+}
+add_filter( 'widget_output', 'wpbs_sidewidget_output_filter', 10, 3 );
+
 /*페이지에서 빈 p태그 방지*/
 function remove_empty_p(){
 	if(is_page()){
@@ -248,33 +333,3 @@ function remove_empty_p(){
 	}
 }
 add_action('wp_head', 'remove_empty_p');
-
-function widget_output_processor( $widget_output, $ul_class, $li_class, $table_class ) {
-	/*일반 ul li list-group추가*/
-	$widget_output = str_replace('<ul>', '<ul class="'.$ul_class.'">', $widget_output);
-	$widget_output = str_replace('<li>', '<li class="'.$li_class.'">', $widget_output);
-
-	/*카테고리*/
-	$widget_output = str_replace('<li class="cat-item', '<li class="'.$li_class.' cat-item', $widget_output);
-	//$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
-	//$widget_output = str_replace(')', ' </span>', $widget_output);
-
-	/*페이지*/
-	$widget_output = str_replace('<li class="page_item', '<li class="'.$li_class.' page_item', $widget_output);
-	
-	/*덧글*/
-	$widget_output = str_replace('ul id="recentcomments"', 'ul id="recentcomments" class="'.$ul_class.'"', $widget_output);
-	$widget_output = str_replace('li class="recentcomments"', 'li class="'.$li_class.' recentcomments"', $widget_output);
-
-	/*달력*/
-	$widget_output = str_replace('table id="wp-calendar"', 'table id="wp-calendar" class="'.$table_class.'"', $widget_output);
-
-	/*Nav bar*/
-	//$widget_output = str_replace(' class="menu"', 'class="menu nav nav-stacked nav-pills"', $widget_output);
-
-	//var_dump($widget_output);
-	return $widget_output;
-
-}
-add_filter( 'widget_output', 'widget_output_processor', 10, 4 );
-	

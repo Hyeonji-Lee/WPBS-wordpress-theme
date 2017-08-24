@@ -38,11 +38,14 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 .search-form.form-inline{padding:8px 0;}
 .widget_search .search-form.form-inline{padding:8px;}
 
-/*사이드바*/
+/**사이드바**/
 /*.wpbs-sidebar h4{border-bottom:1px solid #dddddd; padding-bottom:10px;}
 .wpbs-sidebar section{padding: 0 10px;}*/
 .wpbs-sidebar ul{list-style:none; margin:0 0 10px 0; padding:0;}
 .wpbs-sidebar ul>li a{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/*태그구름*/
+.wpbs-sidebar div.tagcloud{padding:10px;}
+.wpbs-sidebar a.tag-cloud-link{display:inline-block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;}
 
 /*프론트페이지 사이트 아이콘*/
 .wpbs-site-icon{margin:50px 0;}
