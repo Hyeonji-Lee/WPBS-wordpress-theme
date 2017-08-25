@@ -214,6 +214,9 @@ function wpbs_logo_setup() {
 }
 add_action( 'after_setup_theme', 'wpbs_logo_setup' );
 
+/*썸네일 크기 정의*/
+add_image_size( 'wpbs-featured-image', 250, 250, true );
+
 /*사이드바 위젯에 부트스트랩 컴포넌트 적용*/
 function wpbs_filter_dynamic_sidebar_params( $sidebar_params ) {
 	
@@ -333,11 +336,13 @@ function wop_bootstrap_search_form() {
 	return $form;
 }
 
+/*카테고리 링크 부트스트랩 클래스 추가*/
 add_filter( "the_category", 'add_category_label_class');
 function add_category_label_class($thelist, $separator, $parents) {
-	return str_replace('<a href="', '<a class="label label-primary" href="', $thelist);
+	return str_replace('<a href="', '<a class="badge" href="', $thelist);
 }
 
+/*태그 링크 부트스트랩 클래스 추가*/
 add_filter( "term_links-post_tag", 'add_tag_label_class');
 function add_tag_label_class($links) {
 	return str_replace('<a href="', '<a class="label label-default" href="', $links);

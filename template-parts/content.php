@@ -11,19 +11,12 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php if ( '' !== get_the_post_thumbnail() && ! is_single() ) : ?>
-		<?php if(post_password_required()) : ?>
-		<div class="post-thumbnail" style="background-color:#303030;">
-			<h3 style="margin:60px 20px;">미리보기 없음<h3>
-		</div><!-- .post-thumbnail -->
-		<?php else : ?>
 		<div class="post-thumbnail">
 			<a class="thumbnail" href="<?php the_permalink(); ?>">
 				<?php the_post_thumbnail( 'wpbs-featured-image' ); ?>
 			</a>
 		</div><!-- .post-thumbnail -->
-		<?php endif; ?>
 	<?php endif; ?>
-	
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -33,13 +26,12 @@
 		endif;
 
 		if ( 'post' === get_post_type() ) : ?>
-		<div class="label label-default entry-meta">
+		<div class="entry-meta">
 			<?php wpbs_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
 	</header><!-- .entry-header -->
-
 	<div class="entry-content">
 		<?php
 			if ( is_single() ) :
