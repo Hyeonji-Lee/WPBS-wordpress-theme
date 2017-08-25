@@ -49,22 +49,22 @@ function wpbs_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'wpbs' ) );
+		$categories_list = get_the_category_list( esc_html__( ' ', 'wpbs' ) );
 		if ( $categories_list && wpbs_categorized_blog() ) {
 			/* translators: 1: list of categories. */
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'wpbs' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<div class="cat-links">' . esc_html__( 'Posted in %1$s', 'wpbs' ) . '</div>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'wpbs' ) );
+		$tags_list = get_the_tag_list( '', esc_html_x( ' ', 'list item separator', 'wpbs' ) );
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'wpbs' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<div class="tags-links">' . esc_html__( 'Tagged %1$s', 'wpbs' ) . '</div>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
-
+	
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
+		echo '<span class="btn btn-primary comments-link">';
 		comments_popup_link(
 			sprintf(
 				wp_kses(
@@ -95,7 +95,7 @@ function wpbs_entry_footer() {
 			),
 			get_the_title()
 		),
-		'<span class="edit-link">',
+		'<span class="btn btn-default edit-link">',
 		'</span>'
 	);
 }

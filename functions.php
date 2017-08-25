@@ -333,6 +333,16 @@ function wop_bootstrap_search_form() {
 	return $form;
 }
 
+add_filter( "the_category", 'add_category_label_class');
+function add_category_label_class($thelist, $separator, $parents) {
+	return str_replace('<a href="', '<a class="label label-primary" href="', $thelist);
+}
+
+add_filter( "term_links-post_tag", 'add_tag_label_class');
+function add_tag_label_class($links) {
+	return str_replace('<a href="', '<a class="label label-default" href="', $links);
+}
+
 /*페이지에서 빈 p태그 방지*/
 function remove_empty_p(){
 	if(is_page()){
