@@ -44,7 +44,7 @@ function wpbs_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'wpbs' ),
+		'primary' => esc_html__( 'Primary', 'wpbs' ),
 	) );
 
 	/*
@@ -197,9 +197,12 @@ add_action( 'wp_enqueue_scripts', 'bootstrap_styles' );
 // Register Custom Navigation Walker
 require_once('wp-bootstrap-navwalker.php');
 
-register_nav_menus( array(
+/*register_nav_menus( array(
 	'primary' => __( 'Primary Menu', 'WPBS' ),
-) );
+) );*/
+
+/*썸네일 크기 정의*/
+add_image_size( 'wpbs-featured-image', 250, 250, true );
 
 // 테마 로고 삽입
 function wpbs_logo_setup() {
@@ -213,9 +216,6 @@ function wpbs_logo_setup() {
     add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'wpbs_logo_setup' );
-
-/*썸네일 크기 정의*/
-add_image_size( 'wpbs-featured-image', 250, 250, true );
 
 /*사이드바 위젯에 부트스트랩 컴포넌트 적용*/
 function wpbs_filter_dynamic_sidebar_params( $sidebar_params ) {
