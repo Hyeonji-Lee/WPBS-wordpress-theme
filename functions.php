@@ -197,10 +197,6 @@ add_action( 'wp_enqueue_scripts', 'bootstrap_styles' );
 // Register Custom Navigation Walker
 require_once('wp-bootstrap-navwalker.php');
 
-/*register_nav_menus( array(
-	'primary' => __( 'Primary Menu', 'WPBS' ),
-) );*/
-
 /*썸네일 크기 정의*/
 add_image_size( 'wpbs-featured-image', 250, 250, true );
 
