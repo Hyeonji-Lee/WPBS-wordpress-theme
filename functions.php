@@ -344,6 +344,9 @@ function add_tag_label_class($links) {
 	return str_replace('<a href="', '<a class="label label-default" href="', $links);
 }
 
+/*요약글에서 빈 p태그 방지*/
+remove_filter( 'the_excerpt', 'wpautop' );
+
 /*페이지에서 빈 p태그 방지*/
 function remove_empty_p(){
 	if(is_page()){

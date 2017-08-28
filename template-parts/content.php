@@ -25,48 +25,41 @@
 		<?php
 		endif; ?>
 	</header><!-- .entry-header -->
-	<div class="wpbs-content-box">
-		<?php if ( '' !== get_the_post_thumbnail() && ! is_single() ) : ?>
-			<div class="thumbnail pull-left post-thumbnail">
-				<a href="<?php the_permalink(); ?>">
-					<?php the_post_thumbnail( 'wpbs-featured-image' ); ?>
-				</a>
-			</div><!-- .post-thumbnail -->
-		<?php endif; ?>
-		<div class="entry-content">
-			<?php
-				if ( is_single() ) :
-				/* translators: %s: Name of current post */
-				the_content( sprintf(
-						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'wpbs' ),
-						get_the_title()
-						) );
-				
-				wp_link_pages( array(
-						'before'      => '<div class="page-links">' . __( 'Pages:', 'wpbs' ),
-						'after'       => '</div>',
-						'link_before' => '<span class="page-number">',
-						'link_after'  => '</span>',
-				) );
-				
-				else :
-				
-				the_excerpt( sprintf(
-						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'wpbs' ),
-						get_the_title()
-						) );
-				
-				wp_link_pages( array(
-						'before'      => '<div class="page-links">' . __( 'Pages:', 'wpbs' ),
-						'after'       => '</div>',
-						'link_before' => '<span class="page-number">',
-						'link_after'  => '</span>',
-				) );
-				
-				endif;
-			?>
-		</div><!-- .entry-content -->
-	</div>
+
+	<div class="entry-content">
+		<?php
+			if ( is_single() ) :
+			/* translators: %s: Name of current post */
+			the_content( sprintf(
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'wpbs' ),
+					get_the_title()
+					) );
+			
+			wp_link_pages( array(
+					'before'      => '<div class="page-links">' . __( 'Pages:', 'wpbs' ),
+					'after'       => '</div>',
+					'link_before' => '<span class="page-number">',
+					'link_after'  => '</span>',
+			) );
+			
+			else :
+			
+			the_excerpt( sprintf(
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'wpbs' ),
+					get_the_title()
+					) );
+			
+			wp_link_pages( array(
+					'before'      => '<div class="page-links">' . __( 'Pages:', 'wpbs' ),
+					'after'       => '</div>',
+					'link_before' => '<span class="page-number">',
+					'link_after'  => '</span>',
+			) );
+			
+			endif;
+		?>
+	</div><!-- .entry-content -->
+
 	<footer class="entry-footer">
 		<?php wpbs_entry_footer(); ?>
 	</footer><!-- .entry-footer -->

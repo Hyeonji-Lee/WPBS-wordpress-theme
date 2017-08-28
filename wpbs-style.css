@@ -55,6 +55,19 @@ body {font-family: 'Nanum Gothic', sans-serif;}
 .site-footer{padding:20px 0;}
 .wpbs-footer-container{width:100%; background:#000; color:#fff; margin-top:50px;}
 
+/**포스트 영역**/
+/*제목*/
+.entry-title.page-header{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/*엔트리콘텐츠*/
+.wpbs-content-box.panel-body{padding:15px 0;}
+article.panel .entry-content.col-md-9{display:inline-block; margin:0;}
+/*엔트리푸터*/
+.entry-footer a {display:inline-block; max-width:100%; overflow:hidden; text-overflow:ellipsis;}
+.entry-footer .cat-links{margin-bottom:10px;}
+.entry-footer .tags-links{margin-bottom:10px;}
+.entry-footer .btn{margin-right:10px;}
+.entry-footer .btn a{color:#fff;}
+
 /*===========================================
 =       Bootstrap 3 Media Queries       =
 ===========================================*/
