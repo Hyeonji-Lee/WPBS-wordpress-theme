@@ -4,8 +4,14 @@
  */
 
 get_header(); ?>
-    <div class="wpbs-site-icon">
-        <img src="<?php site_icon_url(); ?>">
+    <div class="jumbotron wpbs-site-icon">
+    	<div>
+    		<img src="<?php site_icon_url(); ?>">
+    	</div>
+    	<div>
+    		<h1><?php echo get_bloginfo('name'); ?></h1>
+    		<h3><?php echo get_bloginfo('description'); ?></h3>
+    	</div>
     </div>
     <div class="col-lg-9 wpbs-content">
         <div id="primary" class="content-area">

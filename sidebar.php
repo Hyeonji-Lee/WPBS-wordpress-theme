@@ -12,7 +12,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 }
 ?>
 <!--<div class="col-md-3 wpbs-sidebar" data-spy="affix" data-offset-top="700" data-offset-bottom="300">-->
-<div class="col-md-3 wpbs-sidebar">
+<div class="col-md-3 pull-right wpbs-sidebar">
 	<aside id="secondary" class="widget-area" role="complementary">
 		<?php
 			dynamic_sidebar( 'sidebar-1' );
