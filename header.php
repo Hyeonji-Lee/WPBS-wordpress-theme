@@ -69,5 +69,5 @@
 	</header><!-- #masthead -->
 </div><!-- .container-fluid -->
 
-<div id="content" class="site-content">
-	<div class="container wpbs-container">
+<div id="content" class="container wpbs-container site-content">
+	<div class="row">

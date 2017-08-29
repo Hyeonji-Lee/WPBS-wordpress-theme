@@ -4,13 +4,15 @@
  */
 
 get_header(); ?>
-    <div class="jumbotron wpbs-site-icon">
-    	<div>
-    		<img src="<?php site_icon_url(); ?>">
+    <div class="jumbotron row wpbs-site-icon">
+    	<div class="col-md-7">
+    		<div><img src="<?php site_icon_url(); ?>"></div>
     	</div>
-    	<div>
-    		<h1><?php echo get_bloginfo('name'); ?></h1>
-    		<h3><?php echo get_bloginfo('description'); ?></h3>
+    	<div class="col-md-5">
+    		<div>
+    			<h1><?php echo get_bloginfo('name'); ?></h1>
+    			<h3><?php echo get_bloginfo('description'); ?></h3>
+    		</div>
     	</div>
     </div>
     <div class="col-lg-9 wpbs-content">

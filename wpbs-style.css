@@ -96,7 +96,6 @@ article.panel .entry-content.col-md-9{display:inline-block; margin:0;}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .wpbs-container.container{max-width:1600px; width:100%; padding:0 5%;}
-    .wpbs-content{margin-left:-15px;}
     .wpbs-sidebar{right:0; margin-right:-15px; transition:all 0.5s;}
     /*.wpbs-sidebar.affix-top{}*/
     .wpbs-sidebar.affix{top:50px; padding-right:5%;}

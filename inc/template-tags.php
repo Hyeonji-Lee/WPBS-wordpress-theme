@@ -26,7 +26,7 @@ function wpbs_posted_on() {
 
 	$posted_on = sprintf(
 		/* translators: %s: post date. */
-		esc_html_x( 'Posted on %s', 'post date', 'wpbs' ),
+		esc_html_x( ' %s', 'post date', 'wpbs' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
@@ -36,7 +36,7 @@ function wpbs_posted_on() {
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	echo '<span class="label label-info posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	echo '<span class="label label-info posted-on"><span class="glyphicon glyphicon-calendar" aria-hidden="true" style="margin-right:5px;"></span>' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
 
 }
 endif;
@@ -52,14 +52,14 @@ function wpbs_entry_footer() {
 		$categories_list = get_the_category_list( esc_html__( ' ', 'wpbs' ) );
 		if ( $categories_list && wpbs_categorized_blog() ) {
 			/* translators: 1: list of categories. */
-			printf( '<div class="cat-links">' . esc_html__( 'Posted in %1$s', 'wpbs' ) . '</div>', $categories_list ); // WPCS: XSS OK.
+			printf( '<div class="cat-links"><span class="glyphicon glyphicon-folder-open" aria-hidden="true" style="margin-right:5px;"></span>' . esc_html__( ' %1$s', 'wpbs' ) . '</div>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html_x( ' ', 'list item separator', 'wpbs' ) );
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
-			printf( '<div class="tags-links">' . esc_html__( 'Tagged %1$s', 'wpbs' ) . '</div>', $tags_list ); // WPCS: XSS OK.
+			printf( '<div class="tags-links"><span class="glyphicon glyphicon-tags" aria-hidden="true" style="margin-right:5px;"></span>' . esc_html__( ' %1$s', 'wpbs' ) . '</div>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 	
