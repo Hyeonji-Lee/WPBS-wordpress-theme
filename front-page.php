@@ -33,7 +33,9 @@ get_header(); ?>
 
                 endwhile;
 
-                the_posts_navigation();
+                if ( function_exists('wp_bootstrap_pagination') ):
+                	wp_bootstrap_pagination();
+                endif;
 
             else :
 

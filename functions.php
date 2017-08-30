@@ -197,6 +197,8 @@ add_action( 'wp_enqueue_scripts', 'bootstrap_styles' );
 // Register Custom Navigation Walker
 require_once('wp-bootstrap-navwalker.php');
 
+require get_template_directory().'/bootstrap-style/bootstrap-style-functions.php';
+
 /*썸네일 크기 정의*/
 add_image_size( 'wpbs-featured-image', 250, 250, true );
 
@@ -212,137 +214,6 @@ function wpbs_logo_setup() {
     add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'wpbs_logo_setup' );
-
-/*사이드바 위젯에 부트스트랩 컴포넌트 적용*/
-function wpbs_filter_dynamic_sidebar_params( $sidebar_params ) {
-	
-	if ( is_admin() ) {
-		return $sidebar_params;
-	}
-	
-	global $wp_registered_widgets;
-	$widget_id = $sidebar_params[0]['widget_id'];
-	
-	$wp_registered_widgets[ $widget_id ]['original_callback'] = $wp_registered_widgets[ $widget_id ]['callback'];
-	$wp_registered_widgets[ $widget_id ]['callback'] = 'wpbs_custom_widget_callback_function';
-	
-	return $sidebar_params;
-	
-}
-add_filter( 'dynamic_sidebar_params', 'wpbs_filter_dynamic_sidebar_params' );
-
-function wpbs_custom_widget_callback_function() {
-	
-	global $wp_registered_widgets;
-	$original_callback_params = func_get_args();
-	$widget_id = $original_callback_params[0]['widget_id'];
-	
-	$original_callback = $wp_registered_widgets[ $widget_id ]['original_callback'];
-	$wp_registered_widgets[ $widget_id ]['callback'] = $original_callback;
-	
-	$widget_id_base = $wp_registered_widgets[ $widget_id ]['callback'][0]->id_base;
-	
-	if ( is_callable( $original_callback ) ) {
-		
-		ob_start();
-		call_user_func_array( $original_callback, $original_callback_params );
-		$widget_output = ob_get_clean();
-		
-		echo apply_filters( 'widget_output', $widget_output, $widget_id_base, $widget_id );
-		
-	}
-	
-}
-
-function wpbs_sidewidget_output_filter( $widget_output, $widget_id_base, $widget_id ) {
-	$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
-	$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
-	switch ($widget_id_base){
-		case 'categories':
-			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
-			$widget_output = str_replace('<li class="cat-item cat-item-', '<li class="list-group-item cat-item cat-item-', $widget_output);
-			$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
-			$widget_output = str_replace(')', ' </span>', $widget_output);
-			break;
-		case 'calendar':
-			$widget_output = str_replace('calendar_wrap', 'calendar_wrap table-responsive', $widget_output);
-			$widget_output = str_replace('<table id="wp-calendar', '<table class="table table-condensed" id="wp-calendar', $widget_output);
-			break;
-		case 'tag_cloud':
-			$widget_output = str_replace('class="tag-cloud-link', 'class="label label-primary tag-cloud-link', $widget_output);
-			break;
-		case 'archives':
-			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
-			$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
-			$widget_output = str_replace('(', '<span class="badge cat-item-count"> ', $widget_output);
-			$widget_output = str_replace(')', ' </span>', $widget_output);
-			break;
-		case 'meta':
-			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
-			$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
-			break;
-		case 'recent-posts':
-			$widget_output = str_replace('<ul>', '<ul class="list-group">', $widget_output);
-			$widget_output = str_replace('<li>', '<li class="list-group-item">', $widget_output);
-			$widget_output = str_replace('class="post-date"', 'class="post-date text-muted small"', $widget_output);
-			break;
-		case 'recent-comments':
-			$widget_output = str_replace('<ul id="recentcomments">', '<ul id="recentcomments" class="list-group">', $widget_output);
-			$widget_output = str_replace('<li class="recentcomments">', '<li class="recentcomments list-group-item">', $widget_output);
-			$widget_output = str_replace('<span class="comment-author-link">', '<span class="label label-default comment-author-link">', $widget_output);
-			$widget_output = str_replace('(', '', $widget_output);
-			$widget_output = str_replace(')', '', $widget_output);
-			break;
-		case 'pages':
-			$widget_output = str_replace('<ul>', '<ul class="nav nav-stacked nav-pills">', $widget_output);
-			break;
-		case 'nav_menu':
-			$widget_output = str_replace(' class="menu"', 'class="menu nav nav-stacked nav-pills"', $widget_output);
-			break;
-		case 'grofile':
-			$widget_output = str_replace('<p>', '<p class="label label-primary">', $widget_output);
-			break;
-		
-	}
-	return $widget_output;
-}
-add_filter( 'widget_output', 'wpbs_sidewidget_output_filter', 10, 3 );
-
-/*검색 폼 부트스트랩*/
-add_filter( 'get_search_form', 'wop_bootstrap_search_form', 100);
-function wop_bootstrap_search_form() {
-	$value_or_placeholder = ( get_search_query() == '' ) ? 'placeholder' : 'value';
-	$label = 'Search';
-	$search_text = 'Search';
-	$button_text = 'Search';
-	$form = '<form method="get" class="search-form form-inline" action="'.home_url( '/' ).'" role="search">
-    <div class="form-group">
-        <label class="sr-only sr-only-focusable" for="bsg-search-form">'.esc_html( $label ).'</label>
-        <div class="input-group">
-            <input type="search" class="search-field form-control" id="search" name="s" '.$value_or_placeholder.'="'.esc_attr( $search_text ).'">
-            <span class="input-group-btn">
-                <button type="submit" class="search-submit btn btn-default">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <span class="sr-only">'.esc_attr( $button_text ).'</span>
-                </button>
-            </span>
-        </div>
-    </div>
-</form>';
-	return $form;
-}
-
-/*카테고리 링크 부트스트랩 클래스 추가*/
-add_filter( "the_category", 'add_category_label_class');
-function add_category_label_class($thelist, $separator, $parents) {
-	return str_replace('<a href="', '<a class="badge" href="', $thelist);
-}
-
-/*태그 링크 부트스트랩 클래스 추가*/
-add_filter( "term_links-post_tag", 'add_tag_label_class');
-function add_tag_label_class($links) {
-	return str_replace('<a href="', '<a class="label label-default" href="', $links);
-}
 
 /*요약글에서 빈 p태그 방지*/
 remove_filter( 'the_excerpt', 'wpautop' );
