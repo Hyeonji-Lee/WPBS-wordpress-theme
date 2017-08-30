@@ -33,8 +33,8 @@ get_header(); ?>
 
                 endwhile;
 
-                if ( function_exists('wp_bootstrap_pagination') ):
-                	wp_bootstrap_pagination();
+                if ( function_exists('wpbs_bootstrap_pagination') ):
+                	wpbs_bootstrap_pagination();
                 endif;
 
             else :
